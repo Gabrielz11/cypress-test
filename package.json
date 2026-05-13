@@ -4,10 +4,16 @@
   "description": "Projeto de testes automatizados com Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run",
+    "setup": "npm install && cd app/backend && npm install",
+    "backend": "cd app/backend && npm start",
+    "frontend": "serve app/frontend -l 5000",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\" \"npm run cypress:open\"",
+    "test": "concurrently --success first --kill-others \"npm run backend\" \"npm run frontend\" \"cypress run\"",
     "cypress:open": "cypress open"
   },
   "devDependencies": {
-    "cypress": "^15.14.2"
+    "concurrently": "^8.2.2",
+    "cypress": "^15.14.2",
+    "serve": "^14.2.4"
   }
 }
