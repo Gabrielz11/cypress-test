@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Antigravity App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="home-body">
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">Antigravity</div>
+        <button id="logoutBtn" class="btn-outline">Sair</button>
+    </nav>
+
+    <main class="home-content">
+        <div class="welcome-card">
+            <h1>Olá, <span id="userEmail">Usuário</span>!</h1>
+            <p>Você acessou o sistema com sucesso. Este é o seu painel de controle.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>Atividade</h3>
+                    <p>Recente</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Status</h3>
+                    <p>Ativo</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple script for home page
+        const email = localStorage.getItem('userEmail');
+        if (!email) {
+            window.location.href = 'index.html';
+        } else {
+            document.getElementById('userEmail').textContent = email;
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('userEmail');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
